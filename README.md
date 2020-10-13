@@ -47,10 +47,6 @@ Upload to board (adjust the port if necessary):
 
 	arduino-cli upload --fqbn adafruit:avr:itsybitsy32u4_5V --port /dev/ttyACM0 chrumm
 
-On Linux, I had to add the current user to the
-dialout group to get permission for the upload:
-
-	sudo adduser USERNAME dialout
-
-I also had to uninstall `modemmanager`,
+On Linux, I had to add the current user to the `dialout` group to get
+permission for the upload. I also had to uninstall `modemmanager`,
 because it interfered with the connection.

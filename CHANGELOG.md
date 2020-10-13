@@ -1,3 +1,8 @@
+## 0.2.0 (2020-10-12)
+
+- Updated layout for Chrumm 0.2.
+- Added support for multimedia keys.
+
 ## 0.1.1 (2020-07-10)
 
 - Simplified press and release functions.
