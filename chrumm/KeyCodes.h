@@ -3,18 +3,13 @@
 #include "HID-Project.h"
 
 
-// Shorter type name
-
 using KeyCode = KeyboardKeycode;
 
 
-// Shorter key names
+// HID Keyboard Page (0x07)
+// ------------------------
 
 constexpr KeyCode kNone = 0x00;
-
-constexpr KeyCode kErrorRollOver  = 0x01;
-constexpr KeyCode kErrorPostFail  = 0x02;
-constexpr KeyCode kErrorUndefined = 0x03;
 
 constexpr KeyCode kA = 0x04;
 constexpr KeyCode kB = 0x05;
@@ -86,19 +81,19 @@ constexpr KeyCode kF10 = 0x43;
 constexpr KeyCode kF11 = 0x44;
 constexpr KeyCode kF12 = 0x45;
 
-constexpr KeyCode kPrint  = 0x46;
-constexpr KeyCode kScrLk  = 0x47;
-constexpr KeyCode kPause  = 0x48;
-constexpr KeyCode kInsert = 0x49;
-constexpr KeyCode kHome   = 0x4A;
-constexpr KeyCode kPgUp   = 0x4B;
-constexpr KeyCode kDelete = 0x4C;
-constexpr KeyCode kEnd    = 0x4D;
-constexpr KeyCode kPgDn   = 0x4E;
-constexpr KeyCode kRight  = 0x4F;
-constexpr KeyCode kLeft   = 0x50;
-constexpr KeyCode kDown   = 0x51;
-constexpr KeyCode kUp     = 0x52;
+constexpr KeyCode kPrint = 0x46;
+constexpr KeyCode kScrLk = 0x47;
+constexpr KeyCode kPause = 0x48;
+constexpr KeyCode kIns   = 0x49;
+constexpr KeyCode kHome  = 0x4A;
+constexpr KeyCode kPgUp  = 0x4B;
+constexpr KeyCode kDel   = 0x4C;
+constexpr KeyCode kEnd   = 0x4D;
+constexpr KeyCode kPgDn  = 0x4E;
+constexpr KeyCode kRight = 0x4F;
+constexpr KeyCode kLeft  = 0x50;
+constexpr KeyCode kDown  = 0x51;
+constexpr KeyCode kUp    = 0x52;
 
 constexpr KeyCode kNumLk  = 0x53;
 constexpr KeyCode kpDiv   = 0x54;
@@ -152,13 +147,6 @@ constexpr KeyCode kMute   = 0x7F;
 constexpr KeyCode kVolUp  = 0x80;
 constexpr KeyCode kVolDn  = 0x81;
 
-constexpr KeyCode kLockingCapsLk = 0x82;
-constexpr KeyCode kLockingNumLk  = 0x83;
-constexpr KeyCode kLockingScrLk  = 0x84;
-
-constexpr KeyCode kpComma  = 0x85;
-constexpr KeyCode kpEqual2 = 0x86;
-
 constexpr KeyCode kInt1 = 0x87;
 constexpr KeyCode kInt2 = 0x88;
 constexpr KeyCode kInt3 = 0x89;
@@ -179,66 +167,6 @@ constexpr KeyCode kLang7 = 0x96;
 constexpr KeyCode kLang8 = 0x97;
 constexpr KeyCode kLang9 = 0x98;
 
-constexpr KeyCode kErase   = 0x99;
-constexpr KeyCode kSysReq  = 0x9A;
-constexpr KeyCode kCancel  = 0x9B;
-constexpr KeyCode kClear   = 0x9C;
-constexpr KeyCode kPrior   = 0x9D;
-constexpr KeyCode kReturn2 = 0x9E;
-constexpr KeyCode kSep     = 0x9F;
-constexpr KeyCode kOut     = 0xA0;
-constexpr KeyCode kOper    = 0xA1;
-constexpr KeyCode kClear2  = 0xA2;
-constexpr KeyCode kCrSel   = 0xA3;
-constexpr KeyCode kExSel   = 0xA4;
-
-constexpr KeyCode kp00         = 0xB0;
-constexpr KeyCode kp000        = 0xB1;
-constexpr KeyCode kThousandSep = 0xB2;
-constexpr KeyCode kDecimalSep  = 0xB3;
-constexpr KeyCode kCurrency    = 0xB4;
-constexpr KeyCode kSubCurrency = 0xB5;
-constexpr KeyCode kpLParen     = 0xB6;
-constexpr KeyCode kpRParen     = 0xB7;
-constexpr KeyCode kpLBrace     = 0xB8;
-constexpr KeyCode kpRBrace     = 0xB9;
-constexpr KeyCode kpTab        = 0xBA;
-constexpr KeyCode kpBSpace     = 0xBB;
-constexpr KeyCode kpA          = 0xBC;
-constexpr KeyCode kpB          = 0xBD;
-constexpr KeyCode kpC          = 0xBE;
-constexpr KeyCode kpD          = 0xBF;
-constexpr KeyCode kpE          = 0xC0;
-constexpr KeyCode kpF          = 0xC1;
-constexpr KeyCode kpXor        = 0xC2;
-constexpr KeyCode kpCaret      = 0xC3;
-constexpr KeyCode kpPercent    = 0xC4;
-constexpr KeyCode kpLess       = 0xC5;
-constexpr KeyCode kpGreater    = 0xC6;
-constexpr KeyCode kpAnd        = 0xC7;
-constexpr KeyCode kpLogicAnd   = 0xC8;
-constexpr KeyCode kpOr         = 0xC9;
-constexpr KeyCode kpLogicOr    = 0xCA;
-constexpr KeyCode kpColon      = 0xCB;
-constexpr KeyCode kpPound      = 0xCC;
-constexpr KeyCode kpSpace      = 0xCD;
-constexpr KeyCode kpAt         = 0xCE;
-constexpr KeyCode kpExclam     = 0xCF;
-constexpr KeyCode kpMemStore   = 0xD0;
-constexpr KeyCode kpMemRecall  = 0xD1;
-constexpr KeyCode kpMemClear   = 0xD2;
-constexpr KeyCode kpMemAdd     = 0xD3;
-constexpr KeyCode kpMemSub     = 0xD4;
-constexpr KeyCode kpMemMul     = 0xD5;
-constexpr KeyCode kpMemDiv     = 0xD6;
-constexpr KeyCode kpPlusMinus  = 0xD7;
-constexpr KeyCode kpClear      = 0xD8;
-constexpr KeyCode kpClearEntry = 0xD9;
-constexpr KeyCode kpBin        = 0xDA;
-constexpr KeyCode kpOct        = 0xDB;
-constexpr KeyCode kpDec        = 0xDC;
-constexpr KeyCode kpHex        = 0xDD;
-
 constexpr KeyCode kLCtrl  = 0xE0;
 constexpr KeyCode kLShift = 0xE1;
 constexpr KeyCode kLAlt   = 0xE2;
@@ -247,3 +175,41 @@ constexpr KeyCode kRCtrl  = 0xE4;
 constexpr KeyCode kRShift = 0xE5;
 constexpr KeyCode kRAlt   = 0xE6;
 constexpr KeyCode kRGui   = 0xE7;
+
+
+// HID Consumer Page (0x0C)
+// ------------------------
+
+// The consumer codes are stored in unallocated
+// keyboard codes and translated at runtime.
+
+constexpr KeyCode cPlay   = 0xF8;
+constexpr KeyCode cPause  = 0xF9;
+constexpr KeyCode cRecord = 0xFA;
+constexpr KeyCode cFastFw = 0xFB;
+constexpr KeyCode cRewind = 0xFC;
+constexpr KeyCode cNext   = 0xFD;
+constexpr KeyCode cPrev   = 0xFE;
+constexpr KeyCode cStop   = 0xFF;
+
+
+inline bool isConsumerCode(KeyCode code)
+{
+	return code >= 0xF8;
+}
+
+
+inline ConsumerKeycode getConsumerCode(KeyCode code)
+{
+	switch (code) {
+		case cPlay:   return 0xB0;
+		case cPause:  return 0xB1;
+		case cRecord: return 0xB2;
+		case cFastFw: return 0xB3;
+		case cRewind: return 0xB4;
+		case cNext:   return 0xB5;
+		case cPrev:   return 0xB6;
+		case cStop:   return 0xB7;
+		default:      return 0x00;
+	}
+}
