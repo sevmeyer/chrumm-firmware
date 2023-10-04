@@ -1,3 +1,9 @@
+This repository contains the prototype firmware of Chrumm.
+The new firmware is now included in the [main repository].
+
+[main repository]:https://github.com/sevmeyer/chrumm-keyboard
+
+
 Chrumm firmware
 ===============
 
